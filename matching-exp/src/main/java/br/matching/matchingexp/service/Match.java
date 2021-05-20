@@ -1,4 +1,4 @@
-package br.matching.matchingexp;
+package br.matching.matchingexp.service;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -6,6 +6,9 @@ import java.util.List;
 import java.util.Map;
 
 import org.javatuples.Pair;
+
+import br.matching.matchingexp.model.Oferta;
+import br.matching.matchingexp.validador.Validador;
 
 public class Match {
 	Map<Pair<String, Double>, List<Oferta>> oCompraMap = new HashMap<Pair<String,Double>, List<Oferta>>();

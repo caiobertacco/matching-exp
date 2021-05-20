@@ -1,8 +1,10 @@
-package br.matching.matchingexp;
+package br.matching.matchingexp.validador;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.BiFunction;
+
+import br.matching.matchingexp.model.Oferta;
 
 public class Validador {
 	private static final BiFunction<Oferta, Oferta, Boolean> PRODUTO = (o1, o2) -> o1.getProduct().equals(o2.getProduct());
