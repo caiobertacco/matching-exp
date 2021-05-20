@@ -1,5 +1,9 @@
 package br.matching.matchingexp;
 
+import br.matching.matchingexp.model.Lado;
+import br.matching.matchingexp.model.Oferta;
+import br.matching.matchingexp.service.Match;
+
 public class Main {
 	public static void main(String[] args) {
 		Match match = new Match();

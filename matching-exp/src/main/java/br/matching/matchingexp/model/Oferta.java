@@ -1,4 +1,4 @@
-package br.matching.matchingexp;
+package br.matching.matchingexp.model;
 
 public class Oferta {
 
