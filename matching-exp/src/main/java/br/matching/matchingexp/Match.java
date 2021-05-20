@@ -1,12 +1,9 @@
 package br.matching.matchingexp;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import org.javatuples.Pair;
 
@@ -16,10 +13,26 @@ public class Match {
 	
 	public void excutar(Oferta oCompra, Oferta oVenda) {
 		if (Validador.isValid(oCompra, oVenda)) {
+			if (oCompra.getQuantidade() < oVenda.getQuantidade()) {
+				oVenda.setQuantidadeSobra(oVenda.getQuantidade() - oCompra.getQuantidade());
+				
+				Pair<String, Double> keyVenda = new Pair<String, Double>(oVenda.getProduct(), oVenda.getPreco());
+				oVendaMap.putIfAbsent(keyVenda, new LinkedList<Oferta>());
+				oVendaMap.get(keyVenda).add(oVenda);
+			} else if (oCompra.getQuantidade() > oVenda.getQuantidade()) {
+				oCompra.setQuantidadeSobra(oCompra.getQuantidade() - oVenda.getQuantidade());
+				
+				Pair<String, Double> keyCompra = new Pair<String, Double>(oCompra.getProduct(), oCompra.getPreco());
+				oCompraMap.putIfAbsent(keyCompra, new LinkedList<Oferta>());
+				oCompraMap.get(keyCompra).add(oCompra);
+			}
+			
+			System.out.println("--------------------");
 			System.out.println("Novo negócio gerado:");
 			System.out.println("Produto: " + oCompra.getProduct());
 			System.out.println("Preço: " + oCompra.getPreco());
-			System.out.println("Quantidade: " + oCompra.getQuantidade());
+			System.out.println("Quantidade: " + oCompra.getQuantidadeSobra());
+			System.out.println("--------------------");
 		} else {
 			Pair<String, Double> keyCompra = new Pair<String, Double>(oCompra.getProduct(), oCompra.getPreco());
 			oCompraMap.putIfAbsent(keyCompra, new LinkedList<Oferta>());
