@@ -8,12 +8,14 @@ public class Oferta {
 	private String product;
 	private Lado tipo;
 	private long quantidade;
+	private long quantidadeSobra;
 	private double preco;
 
 	public Oferta(String product, Lado tipo, long quantidade, double preco) {
 		this.product = product;
 		this.tipo = tipo;
 		this.quantidade = quantidade;
+		this.quantidadeSobra = quantidade;
 		this.preco = preco;
 		
 		this.id = ++idCounter;
@@ -58,11 +60,19 @@ public class Oferta {
 	public void setId(int id) {
 		this.id = id;
 	}
+	
+	public long getQuantidadeSobra() {
+		return quantidadeSobra;
+	}
+
+	public void setQuantidadeSobra(long quantidadeSobra) {
+		this.quantidadeSobra = quantidadeSobra;
+	}
 
 	@Override
 	public String toString() {
 		return "Oferta [id=" + id + ", product=" + product + ", tipo=" + tipo + ", quantidade=" + quantidade
-				+ ", preco=" + preco + "]";
+				+ ", quantidadeSobra=" + quantidadeSobra + ", preco=" + preco + "]";
 	}
 
 	@Override
